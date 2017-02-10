@@ -1,0 +1,6 @@
+---
+
+
+user: "{{ USER|default(false) }}"
+pass: "{{ PASS|default(false) }}"
+licence: "{{ LICENCE|default(false) }}"

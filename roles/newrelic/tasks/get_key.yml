@@ -1,0 +1,20 @@
+---
+
+
+# scrape newrelic key if user/pass is given. 
+- name: Run Python Script
+  args:
+    chdir: "{{ role_path }}/files"
+  command: python licence.py "{{ user }}" "{{ pass }}"
+  delegate_to: 127.0.0.1
+  run_once: true
+  when: (user and pass)
+  register: script_key
+  failed_when: (script_key.stderr or "ERROR" in script_key.stdout)
+
+# set licence key from scraping, else set licence key from cmd line.
+- name: Set key
+  set_fact:
+     key: "{{ script_key.stdout if not licence else licence }}"
+     fail: msg="Your Newrelic licence key should be 40 characters"
+     when: licence and licence | length != 40

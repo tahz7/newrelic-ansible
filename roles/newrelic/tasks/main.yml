@@ -1,0 +1,26 @@
+---
+
+
+- name: Retrieve newrelic licence key
+  include: get_key.yml
+
+- include: install_debian.yml
+  static: no
+  when: ansible_os_family == 'Debian'
+
+- include: install_redhat.yml
+  static: no
+  when: ansible_os_family == 'RedHat'
+
+- name: Exit if newrelic is installed
+  debug:
+    msg: "Newrelic is already installed on {{ inventory_hostname }}"
+  when: not is_installed|changed
+
+- name: Activate newrelic
+  when: is_installed|changed
+  command: "/usr/sbin/nrsysmond-config --set license_key={{ item }}"
+  with_items: "{{ key }}"
+  notify:
+    - Enable newrelic
+    - Restart newrelic

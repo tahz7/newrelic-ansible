@@ -1,0 +1,8 @@
+---
+
+- name: newrelic install
+  hosts: webservers
+  become: true
+
+  roles:
+    - newrelic

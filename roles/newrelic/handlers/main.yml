@@ -1,0 +1,10 @@
+---
+
+
+- name: Enable newrelic
+  service: name=newrelic-sysmond enabled=yes
+
+- name: Restart newrelic
+  service:
+    name: newrelic-sysmond
+    state: restarted

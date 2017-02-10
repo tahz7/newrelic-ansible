@@ -1,0 +1,20 @@
+---
+
+
+- name: Configure Repository Debian/Ubuntu
+  apt_repository:
+    repo: 'deb http://apt.newrelic.com/debian/ newrelic non-free'
+    state: present
+    update_cache: yes
+
+- name: Add GPG Key
+  apt_key:
+    url: 'https://download.newrelic.com/548C16BF.gpg'
+    state: present
+
+- name: Install NewRelic Agent Debian/Ubuntu
+  apt:
+    name: newrelic-sysmond
+    state: present
+    allow_unauthenticated: yes
+  register: is_installed
