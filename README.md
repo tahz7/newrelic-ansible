@@ -1,7 +1,5 @@
 # newrelic-ansible
 
-**Note: This script is still in beta and going through testing.**
-
 ### description:
 
 Using ansible the script will install and activate newrelic on both centos/redhat and ubuntu/debian machines. Arguments include providing the newrelic user/pass or the newrelic licence key to activate the installation.
@@ -16,3 +14,7 @@ or
 ```
 ansible-playbook --extra-vars '{"LICENCE":"licence-key"}' mail.yml
 ```
+
+### TO-DO:
+
+* Add php integration option
