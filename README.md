@@ -10,7 +10,7 @@ Note: the installation will skip if newrelic already exists on the target host.
 ```
 ansible-playbook --extra-vars '{"LICENCE":"licence-key"}' mail.yml
 ```
-or you can scrape the licence key, however this is not recommended;
+or you can scrape the licence key (not recommended and should only be done on test accounts):
 ```
 ansible-playbook --extra-vars '{"USER":"username","PASS":"password"}' main.yml
 ```
