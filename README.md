@@ -6,15 +6,14 @@ Using ansible the script will install and activate newrelic on both centos/redha
 
 Note: the installation will skip if newrelic already exists on the target host.
 
-### usage:
-```
-ansible-playbook --extra-vars '{"USER":"username","PASS":"password"}' main.yml
-```
-or 
+### usage: 
 ```
 ansible-playbook --extra-vars '{"LICENCE":"licence-key"}' mail.yml
 ```
-
+or you can scrape the licence key, however this is not recommended;
+```
+ansible-playbook --extra-vars '{"USER":"username","PASS":"password"}' main.yml
+```
 ### TO-DO:
 
 * Add php integration option
